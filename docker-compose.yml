@@ -3,14 +3,14 @@ services:
     image: localstack/localstack:latest
     container_name: localstack
     ports:
-      - "4566:4566"      # Puerto principal para todos los servicios (Edge)
-      - "4571:4571"      # Puerto para el health check
+      - '4566:4566' # Puerto principal para todos los servicios (Edge)
+      - '4571:4571' # Puerto para el health check
     environment:
-      - SERVICES=s3,lambda,dynamodb,sqs,cloudwatch,iam,sts,apigateway
+      - SERVICES=s3,lambda,dynamodb,sqs,cloudwatch,iam,sts,apigateway,cloudformation
       - DEBUG=1
       - DATA_DIR=/var/lib/localstack/data
       - LAMBDA_EXECUTOR=docker
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
-      - ./localstack-data:/var/lib/localstack/data  # Persistencia de datos
-      - /var/run/docker.sock:/var/run/docker.sock  # Necesario para ejecutar lambdas en modo Docker
+      - ./localstack-data:/var/lib/localstack/data # Persistencia de datos
+      - /var/run/docker.sock:/var/run/docker.sock # Necesario para ejecutar lambdas en modo Docker

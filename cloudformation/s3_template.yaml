@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 bucket example in CloudFormation
+
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: my-localstack-bucket
+      AccessControl: Private
+
+Outputs:
+  S3BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref MyS3Bucket
+
+
+# awslocal cloudformation create-stack --stack-name s3-stack --template-body file://s3_template.yaml
